@@ -1,1 +1,0 @@
-# especializacion_jornaleros
