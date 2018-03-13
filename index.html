@@ -17,13 +17,19 @@
 
     <link rel="stylesheet" href="./css/fontawesome-all.min.css">
 
+    <link rel="stylesheet" href="./css/alertify.min.css">
+
+    <link rel="stylesheet" href="./css/themes/bootstrap.min.css">
 
     <style>
-    
-        body{
+        body {
             padding-top: 60px;
         }
 
+        .ajs-ok{
+            background: red;
+            color: white;
+        }
     </style>
 
 </head>
@@ -106,42 +112,45 @@
         <div class="row">
             <div class="col-md-12">
 
+                <div class="table-responsive">
 
-                <table id="tblJornaleros" class="table table-hover">
+                    <table id="tblJornaleros" class="table table-hover">
 
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Código Jornalero</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Correo Electrónico</th>
-                            <th scope="col">Fecha de Nacimiento</th>
-                            <th scope="col">Peso</th>
-                            <th scope="col">Opciones</th>
-                        </tr>
-                    </thead>
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Código Jornalero</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Correo Electrónico</th>
+                                <th scope="col">Fecha de Nacimiento</th>
+                                <th scope="col">Peso</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        <tr>
-                            <th class="text-center" scope="row">1</th>
-                            <td>Yhoan Galeano</td>
-                            <td>yhoangaleano@gmail.com</td>
-                            <td>05/07/1993</td>
-                            <td>69Kg</td>
-                            <td>
-                                <button class="btn btn-primary">
-                                    <i class="fa fa-edit"></i>
-                                    Editar
-                                </button>
+                        <tbody>
+                            <tr>
+                                <th class="text-center" scope="row">1</th>
+                                <td>Yhoan Galeano</td>
+                                <td>yhoangaleano@gmail.com</td>
+                                <td>05/07/1993</td>
+                                <td>69Kg</td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <i class="fa fa-edit"></i>
+                                        Editar
+                                    </button>
 
-                                <button class="btn btn-danger">
-                                    <i class="fa fa-trash-alt"></i>
-                                    Eliminar
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
+                                    <button class="btn btn-danger">
+                                        <i class="fa fa-trash-alt"></i>
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
 
-                </table>
+                    </table>
+
+                </div>
 
             </div>
         </div>
@@ -151,6 +160,7 @@
     <script src="./js/jquery-3.2.1.slim.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/alertify.min.js"></script>
 
     <script src="./js/app.js"></script>
 
