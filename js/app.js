@@ -17,9 +17,21 @@ $(document).ready(function () {
     $('#formJornaleros').on('submit', function (event) {
         event.preventDefault();
 
-        guardar();
-        listar();
+        var codigoJornalero = $('#txtCodigo').val();
+
+        console.log(codigoJornalero);
+
+        if (codigoJornalero == '') {
+            guardar();
+            listar();
+        }else{
+            actualizar(codigoJornalero);
+        }
     });
+
+    $('#btnCancelar').on('click', function () {
+        limpiar();
+    })
 
 });
 
@@ -80,7 +92,7 @@ function listar() {
         </tr>`;
         }
 
-        //document.getElementById('tblJornaleros').tBodies[0].innerHTML = template;
+        //document.ge  
         $('#tblJornaleros tbody').append(template);
 
         $('.btn-eliminar').on('click', function () {
@@ -99,7 +111,7 @@ function listar() {
                 ok: 'Confirmar',
                 cancel: 'Cancelar'
             });
-    
+
         });
 
     } else {
@@ -110,25 +122,52 @@ function listar() {
 
 function limpiar() {
     $('#formJornaleros')[0].reset();
+    $('#fgCodigoJornalero').removeClass('visualizar').addClass('ocultar');
+    $('#btnGuardar').removeClass('btn-primary').addClass('btn-success').text('Guardar');
 }
 
 function modificar(codigoJornalero) {
 
-    var jornalero = bdJornaleros.filter(function(jornalero, index){
+    var jornalero = bdJornaleros.filter(function (jornalero, index) {
         return jornalero.codigo == codigoJornalero;
     })[0];
 
+    $('#txtCodigo').val(jornalero.codigo);
     $('#txtNombre').val(jornalero.nombre);
     $('#txtCorreoElectronico').val(jornalero.correoElectronico);
     $('#txtFechaNacimiento').val(jornalero.fechaNacimiento);
     $('#txtPeso').val(jornalero.peso);
+
+    $('#fgCodigoJornalero').removeClass('ocultar').addClass('visualizar');
+    $('#btnGuardar').removeClass('btn-success').addClass('btn-primary').text('Modificar');
+
 }
 
-function eliminar(codigoJornalero){
-    bdJornaleros = bdJornaleros.filter(function(jornalero, index){
+function eliminar(codigoJornalero) {
+    bdJornaleros = bdJornaleros.filter(function (jornalero, index) {
         return jornalero.codigo != codigoJornalero;
     });
     var bdJornalerosString = JSON.stringify(bdJornaleros);
     localStorage.setItem('bdJornaleros', bdJornalerosString);
     listar();
+}
+
+function actualizar(codigoJornalero){
+
+    bdJornaleros.map(function(jornalero){
+        if(jornalero.codigo == codigoJornalero){
+            jornalero.nombre = $('#txtNombre').val();
+            jornalero.correoElectronico = $('#txtCorreoElectronico').val();
+            jornalero.fechaNacimiento = $('#txtFechaNacimiento').val();
+            jornalero.peso = $('#txtPeso').val();
+        }
+    });
+
+    var bdJornalerosString = JSON.stringify(bdJornaleros);
+    localStorage.setItem('bdJornaleros', bdJornalerosString);
+
+    limpiar();
+    listar();
+    alertify.success(`Jornalero con código: ${codigoJornalero} ha sido modificado con éxito.`);
+
 }
